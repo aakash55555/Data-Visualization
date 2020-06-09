@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <svg id="map"></svg>
+  <svg id="bar">
+      <text x="50%" y="50" id="heading" font-size="1.5em" text-anchor="middle" font-family="futura"></text>
+  </svg>
+  <!-- <script src="area1.js"></script> -->
+  <script src="./scripts/d3/d3.v4.js"></script>
+  <script src="./scripts/d3/d3.queue.js"></script>
+  <script src="./scripts/bar_chart.js"></script>
+  <script src="./scripts/map.js"></script>
+  <div id="tooltip" class="hidden">
+    <center>
+    <p><span id="neighbourhood">name</span></p>
+    <p><strong >Birth Rate:</strong></p>
+    <p><span id="value">0</span></p>
+    </center>
+  </div>
+  <p>Domain Abstraction</p>
+<p>Potential users for this UI can be the students who are curious to know about the birth rate, death rate and population increase/decrease rate of the country. On subtracting the smaller of Death rate and Birth rate with the other will give an idea about the percentage with which the population of the country is increasing or decreasing. Even researchers who are doing research on population increase and decrease trends in the different countries will be aided with this visualization. Moreover, the general public can also refer these as these doesn’t require any technical background and tooltip and legend make this visualization even simpler to understand and learn.</p>
+<p>Data Abstraction</p>
+<p>There are two datasets in this visualization namely Geometry and Fields. Data types used are Items while displaying various countries and Attributes while displaying the Birth Rate and Death Rate attributes and positions of various countries. The metadata used is categorical and doesn’t contain any ordering. Additional preprocessing is done by changing the name of different countries in geojson file as per the countries_processed.csv file given. Also some of the countries are removed and added into geojson to make it similar to the given csv file. </p>
+<p>Task Abstraction</p>
+<p>Action for map can be discover and compare various countries and target can be spatial data and one attribute which is named as birth rate while the action for bar chart can be consume and then if data for death rate present then can use it and target can be the attribute death rate. User can find the similarity in the different countries based on death rate and birth rate. They can also explore the countries with maximum and minimum birth rate and death rate and hence can also come to know the rate by which the population of the country is increasing. They can also compare the trends of increasing or decreasing population in the countries which are present in different continents. </p>
+<p>Visualization and Interaction Abstraction</p>
+<p>The visualizations shown are maps and bar chart. Maps have area of different countries as the marks(2D) and channels are color hue and bar charts has mark as line and channel is vertical position attribute death rate. Map made it very easy to check the birth rate of each an every country. Moreover bar chart make it extremely simple to find the death rate of corresponding country. Even the tooltip tells the exact birth rate to compare it with death rate and come to know the percentage by which the population is increasing or decreasing. The birthrate and death rate of different countries can also be compared.</p>
+<p>Algorithm Abstraction</p>
+<p>Maps are made with the help of geojson file and the birthrate and death rate is copied in the geojson(not in actual file). Now in the for loop put the logic of displaying the birth rate and call the method of the death rate and write the logic of the death rate in the other file. </p>
+  
+</body>
+</html>

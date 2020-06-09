@@ -1,0 +1,158 @@
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+  svg {
+    width:50%;
+    height:100%;
+    float: center;
+    display: block;
+    margin: auto
+  }
+
+.feature.active {
+     fill: orange;
+ }
+
+#chart{
+  position: relative;
+  top: 8%;
+  padding-top: 5px;
+}
+
+#tooltip{
+  position: absolute;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  color: #fff;
+  background-color: black;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+span:before {
+  content:'';
+  float: center;
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: solid 5px black;
+  border-left: solid 5px transparent;
+  border-right: solid 5px transparent;
+}
+
+/* #arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid #f00;
+} */
+
+#tooltip.hidden {
+  display: none;
+}
+
+#tooltip p{
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+circle.airbnb {
+  /* fill: #e00007; */
+  opacity: 0.6;
+}
+
+.axis {
+  font-family: arial;
+  font-size: 0.7em;
+}
+
+text {
+  fill: black;
+  stroke: none;
+  position: relative;
+  left: 20%;
+  top: 3%;
+  font-family: 'futura';
+}
+
+.label {
+  font-size: 1.5em;
+}
+
+path {
+  /* fill: none; */
+  stroke: black;
+  stroke-width: 2px;
+}
+.tick {
+  fill: none;
+  stroke: black;
+}
+
+circle {
+  opacity: 0.9;
+  stroke: none;
+  /* fill: red; */
+}
+
+.line {
+  fill: none;
+  stroke: #e00007;
+  stroke-width: 1px;
+}
+
+.line2 {
+  fill: none;
+  stroke: #e00007;;
+  stroke-width: 2px;
+}
+
+#legend {
+    padding: 1.5em 0 0 1.5em;
+}
+
+li.key {
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.tooltip2 {   
+  position: absolute;           
+  text-align: center;           
+  width: 60px;                  
+  height: 28px;                 
+  padding: 2px;             
+  font: 16px sans-serif;        
+  background: none;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
+}
+
+/* .line2 {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+} */
