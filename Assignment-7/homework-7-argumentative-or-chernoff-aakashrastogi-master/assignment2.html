@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+	<style>
+
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+#chart1{
+  width:50%;
+  float:right;
+}
+#chart2{
+  width:50%;
+  float:right;
+
+}
+	</style>
+</head>
+
+<body>
+    <div class="container" id="chart1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+<script>
+
+var margin = {top: 20, right: 20, bottom: 70, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+var svg = d3.select("body").selectAll("#chart1").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + ( margin.left) + "," + margin.top + ")");
+
+d3.csv("data1.csv", function(error, data) {
+
+    data.forEach(function(d) {
+        d.teamwin = d.teamwin;
+        d.totalmatches = +d.totalmatches;
+    });
+	
+  x.domain(data.map(function(d) { return d.teamwin; }));
+  y.domain([0, 30]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Total Matches");
+
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "orange")
+      .attr("x", function(d) { return 50 + x(d.teamwin); })
+      .attr("width", 50)
+      .attr("y", function(d) { return y(d.totalmatches); })
+      .attr("height", function(d) { return height - y(d.totalmatches); });
+
+});
+</script>
+</div>
+<!--For the second one-->
+<!---->
+<div class="container" id="chart2">
+ <script>
+
+var margin = {top: 20, right: 20, bottom: 70, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+var svg = d3.selectAll("#chart2").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + (50+ margin.left) + "," + margin.top + ")");
+
+d3.csv("data2.csv", function(error, data) {
+
+    data.forEach(function(d) {
+        d.matchvenueCountry = d.matchvenueCountry;
+        d.totalMatches = +d.totalMatches;
+    });
+	
+  x.domain(data.map(function(d) { return d.matchvenueCountry; }));
+  y.domain([0, 30]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Total Matches");
+
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "blue")
+      .attr("x", function(d) { return 87 + x(d.matchvenueCountry); })
+      .attr("width", 50)
+      .attr("y", function(d) { return y(d.totalMatches); })
+      .attr("height", function(d) { return height - y(d.totalMatches); });
+
+});
+</script>
+</div>
+<p>bar chart 1 is of orange color</p>
+<p>bar chart 2 is of blue color</p>
+<p>Now both the bar charts are merged</p>
+<p>Answer 1</p>
+<p>This dataset is about the cricket matches records such as the countries between which matches are there, what is the venue, year of match, which country win the match etc. So I am considering only top 500 of rows of the data. Out of that data, I have segregated the data between England and Australia. So according to the top 500 records of the data file which I stored in Modified.csv file there were 29 matches between Australia and England. Australia won 14 matches and England won 15 matches. So England is a better team as per this stats, but if we take a look at the venues then 20 out of 29  matches took place in England and 9 matches took place in Australia. Moreover, England won most of there matches in their home ground. As England is playing in their home ground so they knows their home ground well and are aware of the home ground conditions well. Moreover, there is a good chances that the home ground pitches are prepared in such a way that it enhances the strength of the host team. For example the ground is good for batting as the host country is good in batting. This can lead to contradiction that due to some biasness England  might be appearing a better team. First chart shows that England is better as England won most of the matches between England and Australia but the second chart which shows that most of the matches are in England which is the host ground for England and their might be some favorable circumstances which contradicts this fact of chart1</p>
+<p>Answer 2</p>
+<p>Left chart is between the total matches between England and Australia and total matches won by Australia and England which show England is performing well in International cricket.</p>
+<p>Answer 3</p>
+<p>Right chart shows the total matches between the teams and the total matches which took place in Australia and England which shows biasness that as England is familiar of their home ground and home grounds are usually prepared by seeing the strength of the host country so it Is possible that Australia is performing better as a team.</p>
+<p>Modified.csv contains first 500 records of ContinuousDataset.csv and we consider only those 500 rows for making judgement</p>
+<p>data1.csv is used for chart 1 with orange bars and data2.csv is used for chart2 of blue bars. data1.csv shows the total number of matches between England and Australia and the matches won by Austalia and England. data2.csv shows the total number of matches between England and Australia and the total number of matches in Australia and England.</p>
+</body>
+
+

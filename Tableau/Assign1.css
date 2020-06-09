@@ -1,0 +1,22 @@
+h1, h2, h3 {
+    color: blue;
+    text-align: center;
+}
+p {
+  margin-top:10px;  
+}
+img {
+    left:0;
+    top:0;
+    width: 100%;
+    height: auto;
+    border: 1px solid gray;
+}
+body {
+    margin:auto;
+    width: 100%;
+    max-width: 1200px;
+    background-image: url("images/b4.jpg");
+}
+
+
