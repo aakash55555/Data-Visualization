@@ -10,3 +10,6 @@ Implemented concepts of d3js by drawing different type of data visualzation tech
 ## Software Used
 * Visual Studio Code
 
+## Language Used
+* JavaScript(d3js)
+
